@@ -1,3 +1,16 @@
+/*
+ * The aim with this experiment is to see how a bad hashCode function can hurt the performance
+ * of the .add and .contains functions of HashSet.
+ *
+ * Needs min Java 7 to run
+ * Output example:
+    Time to create worse set: 166
+    Time to create better set: 5
+    Time to create worse set: 333
+    Time to create better set: 2
+ */
+
+
 import java.util.*;
 
 /*
