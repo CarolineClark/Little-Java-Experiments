@@ -10,32 +10,43 @@ public class TenPinBowlingTest {
     }
 
     @Test
-    public void aFrameThatIsNotASpareOrStrike_isASumOfTheIndividualRolls() {
-        assertEquals(3, tpb.getFrameScore(2, 1));
+    public void aTurnThatIsNotASpareOrStrike_isASumOfTheIndividualRolls() {
+        assertEquals(3, tpb.getTurn(2, 1));
     }
 
     @Test
-    public void aFrameThatIsASpare_isASumOfTheFramePlusTheNextRoll() {
-        assertEquals(13, tpb.getSpareFrameScore(3));
+    public void aTurnThatIsASpare_isASumOfTheTurnPlusTheNextRoll() {
+        assertEquals(13, tpb.getSpareTurn(3));
     }
 
     @Test
-    public void aFrameThatIsAStrike_isASumOfTheFramePlusTheNextTwoRolls() {
-         assertEquals(18, tpb.getStrikeFrameScore(3, 5));
+    public void aTurnThatIsAStrike_isASumOfTheTurnPlusTheNextTwoRolls() {
+         assertEquals(18, tpb.getStrikeTurn(3, 5));
     }
 
     @Test
-    public void aFrameWithFirstRollWithScore10_isAStrike() {
+    public void aTurnWithFirstRollWithScore10_isAStrike() {
         assertEquals(TenPinBowling.STRIKE, tpb.getFrameType(10, 0));
     }
 
     @Test
-    public void aFrameWithFirstAndSecondRollSumTo10_isASpare() {
+    public void aTurnWithFirstAndSecondRollSumTo10_isASpare() {
         assertEquals(TenPinBowling.SPARE, tpb.getFrameType(5, 5));
     }
 
     @Test
-    public void aFrameWithFirstAndSecondRollNotSumTo10_isANormalFrame() {
+    public void aTurnWithFirstAndSecondRollNotSumTo10_isANormalTurn() {
         assertEquals(TenPinBowling.NORMAL, tpb.getFrameType(3, 3));
+    }
+
+    @Test
+    public void firstFrameIsTurnScore() {
+        // When
+        tpb.setNextRoll(3);
+        tpb.setNextRoll(5);
+        tpb.calculateFrames();
+
+        // Then
+        assertEquals(8, tpb.getFrame(0));
     }
 }
