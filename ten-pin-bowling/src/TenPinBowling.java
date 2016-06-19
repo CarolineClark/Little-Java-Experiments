@@ -38,11 +38,14 @@ public class TenPinBowling {
         rollCounter++;
     }
 
-    void calculateFrames() {
-        if (rollCounter == 2) {
-            int type = getFrameType(rolls[0], rolls[1]);
-            if (type == NORMAL) {
-                frames[0] = getTurn(rolls[0], rolls[1]);
+    void calculateFrame(int i) {
+        int type = getFrameType(rolls[i], rolls[i + 1]);
+        if (type == NORMAL) {
+            if (i >= 1) {
+                frames[i] = getTurn(rolls[i], rolls[i + 1]) + frames[i - 1];
+            }
+            else {
+                frames[i] = getTurn(rolls[i], rolls[i + 1]);
             }
         }
     }

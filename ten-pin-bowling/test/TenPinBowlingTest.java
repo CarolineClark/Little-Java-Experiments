@@ -44,9 +44,23 @@ public class TenPinBowlingTest {
         // When
         tpb.setNextRoll(3);
         tpb.setNextRoll(5);
-        tpb.calculateFrames();
+        tpb.calculateFrame(0);
 
         // Then
         assertEquals(8, tpb.getFrame(0));
+    }
+
+    @Test
+    public void secondFrameIsSumOfTurnScorePlusFirstFrame() {
+        // When
+        tpb.setNextRoll(3);
+        tpb.setNextRoll(5);
+        tpb.calculateFrame(0);
+        tpb.setNextRoll(3);
+        tpb.setNextRoll(5);
+        tpb.calculateFrame(1);
+
+        // Then
+        assertEquals(16, tpb.getFrame(1));
     }
 }
