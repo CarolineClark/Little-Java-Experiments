@@ -20,10 +20,12 @@ public class TenPinBowling {
     }
 
     int getFrameType(int i, int j) {
-        if (i == 10) {
+        if (i == TOTAL_FRAME_SCORE) {
             return STRIKE;
-        } else {
+        } else if (i + j == TOTAL_FRAME_SCORE) {
             return SPARE;
+        } else {
+            return NORMAL;
         }
     }
 }

@@ -33,4 +33,9 @@ public class TenPinBowlingTest {
     public void aFrameWithFirstAndSecondRollSumTo10_isASpare() {
         assertEquals(TenPinBowling.SPARE, tpb.getFrameType(5, 5));
     }
+
+    @Test
+    public void aFrameWithFirstAndSecondRollNotSumTo10_isANormalFrame() {
+        assertEquals(TenPinBowling.NORMAL, tpb.getFrameType(3, 3));
+    }
 }
