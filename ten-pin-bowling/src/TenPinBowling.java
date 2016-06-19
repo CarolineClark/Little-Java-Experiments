@@ -1,17 +1,27 @@
+import java.util.Arrays;
 
 public class TenPinBowling {
-
-    private int[] frames = new int[10];
-    private int[] rolls = new int[20];
-    private int rollCounter = 0;
 
     public static int NORMAL = 0;
     public static int SPARE = 1;
     public static int STRIKE = 2;
-
     private static int TOTAL_FRAME_SCORE = 10;
 
-    int getTurn(int i, int j) {
+    private int[] frames;
+    private int[] rolls;
+    private int rollCounter;
+
+    public TenPinBowling() {
+        frames = new int[TOTAL_FRAME_SCORE];
+        Arrays.fill(frames, -1);
+
+        rolls = new int[TOTAL_FRAME_SCORE * 2];
+        Arrays.fill(rolls, -1);
+
+        rollCounter = 0;
+    }
+
+    int getNormalTurn(int i, int j) {
         return i + j;
     }
 
@@ -41,12 +51,12 @@ public class TenPinBowling {
     void calculateFrame(int i) {
         int type = getFrameType(rolls[i], rolls[i + 1]);
         if (type == NORMAL) {
-            if (i >= 1) {
-                frames[i] = getTurn(rolls[i], rolls[i + 1]) + frames[i - 1];
-            }
-            else {
-                frames[i] = getTurn(rolls[i], rolls[i + 1]);
-            }
+            frames[i] = getNormalTurn(rolls[i], rolls[i + 1]);
+        } else if (type == SPARE) {
+            frames[i] = getSpareTurn(rolls[i + 2]);
+        }
+        if (i >= 1) {
+            frames[i] += frames[i - 1];
         }
     }
 
