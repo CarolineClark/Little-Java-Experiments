@@ -22,4 +22,10 @@ public class FibonacciTest {
     public void firstTwoNumbersMatchIndex(int i) {
         assertEquals(i, seq[i]);
     }
+
+    @Test
+    public void laterNumbersEqualSumOfPreviousNumbers() {
+        int i = 0;
+        assertEquals(seq[i] + seq[i+1], seq[i+2]);
+    }
 }
