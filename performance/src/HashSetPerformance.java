@@ -11,62 +11,10 @@
  */
 
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
-/*
- * Create a key that always returns the same hashCode but false for equals.
- * This is to create the worst case HashSet, which is essentially a LinkedList.
- * This should have the O(N) for add and contains functions.
- */
-class WorstCaseKey {
-    public int value;
-
-    WorstCaseKey(int value) {
-        this.value = value;
-    }
-
-    public int hashCode() {
-        return 5;
-    }
-
-    public boolean equals(Object obj) {
-        return false;
-    }
-
-    public String toString() {
-        return Integer.toString(this.value);
-    }
-}
-
-/*
- * Create a key that has a unique hash code for each key.
- * This should have the O(1) for add and contains functions.
- */
-class BetterKey {
-    public int value;
-
-    BetterKey(int value) {
-        this.value = value;
-    }
-
-    public int hashCode() {
-        return this.value;
-    }
-
-    public boolean equals(Object obj) {
-        if (obj instanceof BetterKey) {
-            return (this.value == ((BetterKey)obj).value);
-        }
-        return false;
-    }
-
-    public String toString() {
-        return Integer.toString(this.value);
-    }
-}
-
-
-public class HashSetTest {
+public class HashSetPerformance {
     private final static int NUMBER_OF_KEYS = 10000;
 
     private static void logTimeDifference(long time1, long time2, String setName) {
