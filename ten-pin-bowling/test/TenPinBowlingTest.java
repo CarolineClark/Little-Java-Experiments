@@ -65,7 +65,7 @@ public class TenPinBowlingTest {
     }
 
     @Test
-    public void firstFrameAfterStrikeTurn_isTurnScore() {
+    public void firstFrameAfterSpareTurn_isTurnScore() {
         // When
         tpb.setNextRoll(5);
         tpb.setNextRoll(5);
@@ -74,6 +74,19 @@ public class TenPinBowlingTest {
 
         // Then
         assertEquals(13, tpb.getFrame(0));
+    }
+
+    @Test
+    public void firstFrameAfterStrikeTurn_isTurnScore() {
+        // When
+        tpb.setNextRoll(10);
+        tpb.setNextRoll(0);
+        tpb.setNextRoll(3);
+        tpb.setNextRoll(5);
+        tpb.calculateFrame(0);
+
+        // Then
+        assertEquals(18, tpb.getFrame(0));
     }
 
 }

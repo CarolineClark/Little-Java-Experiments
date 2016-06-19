@@ -54,6 +54,8 @@ public class TenPinBowling {
             frames[i] = getNormalTurn(rolls[i], rolls[i + 1]);
         } else if (type == SPARE) {
             frames[i] = getSpareTurn(rolls[i + 2]);
+        } else {
+            frames[i] = getStrikeTurn(rolls[i + 2], rolls[i + 3]);
         }
         if (i >= 1) {
             frames[i] += frames[i - 1];
