@@ -28,4 +28,9 @@ public class TenPinBowlingTest {
     public void aFrameWithFirstRollWithScore10_isAStrike() {
         assertEquals(TenPinBowling.STRIKE, tpb.getFrameType(10, 0));
     }
+
+    @Test
+    public void aFrameWithFirstAndSecondRollSumTo10_isASpare() {
+        assertEquals(TenPinBowling.SPARE, tpb.getFrameType(5, 5));
+    }
 }
