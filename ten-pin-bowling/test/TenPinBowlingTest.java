@@ -1,17 +1,31 @@
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class TenPinBowlingTest {
+    private TenPinBowling tpb;
+    @Before
+    public void setup() {
+        tpb = new TenPinBowling();
+    }
 
     @Test
     public void aFrameThatIsNotASpareOrStrike_isASumOfTheIndividualRolls() {
-        TenPinBowling tpb = new TenPinBowling();
-        assertEquals(tpb.getFrameScore(2, 1), 3);
+        assertEquals(3, tpb.getFrameScore(2, 1));
     }
 
     @Test
     public void aFrameThatIsASpare_isASumOfTheFramePlusTheNextRoll() {
-        TenPinBowling tpb = new TenPinBowling();
-        assertEquals(tpb.getSpareFrameScore(3), 13);
+        assertEquals(13, tpb.getSpareFrameScore(3));
+    }
+
+    @Test
+    public void aFrameThatIsAStrike_isASumOfTheFramePlusTheNextTwoRolls() {
+         assertEquals(18, tpb.getStrikeFrameScore(3, 5));
+    }
+
+    @Test
+    public void aFrameWithFirstRollWithScore10_isAStrike() {
+        assertEquals(TenPinBowling.STRIKE, tpb.getFrameType(10, 0));
     }
 }
