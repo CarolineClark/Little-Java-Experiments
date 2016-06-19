@@ -24,8 +24,8 @@ public class FibonacciTest {
     }
 
     @Test
-    public void laterNumbersEqualSumOfPreviousNumbers() {
-        int i = 0;
+    @Parameters({"0", "1", "4", "6", "9", "38"})
+    public void laterNumbersEqualSumOfPreviousNumbers(int i) {
         assertEquals(seq[i] + seq[i+1], seq[i+2]);
     }
 }
