@@ -10,10 +10,16 @@ import static org.junit.Assert.*;
 @RunWith(JUnitParamsRunner.class)
 public class FibonacciTest {
 
+    private int[] seq;
+
+    @Before
+    public void setup() {
+        seq = new Fibonacci().calculateSequence();
+    }
+
     @Test
     @Parameters({"0", "1"})
     public void firstTwoNumbersMatchIndex(int i) {
-        int[] seq = new Fibonacci().calculateSequence();
         assertEquals(i, seq[i]);
     }
 }
