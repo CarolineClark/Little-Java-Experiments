@@ -8,7 +8,9 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
 public class FizzBuzzTest {
+
     private String sequence;
+
     @Before
     public void setup() {
         sequence = new FizzBuzz().calculate();
@@ -17,12 +19,17 @@ public class FizzBuzzTest {
     @Test
     @Parameters({"1", "2"})
     public void firstTwoNumbersMatchIndex(int index) {
-        int element = getElementAtIndex(sequence, index);
-        assertEquals(index, element);
+        String element = getElementAtIndex(sequence, index);
+        assertEquals(Integer.toString(index), element);
     }
 
-    private int getElementAtIndex(String seq, int index) {
-        return Integer.parseInt(seq.split(",")[index - 1]);
+    @Test
+    public void multipleOfThreesNotFive_isFizz() {
+        assertEquals("fizz", getElementAtIndex(sequence, 3));
+    }
+
+    private String getElementAtIndex(String seq, int index) {
+        return seq.split(",")[index - 1];
 
     }
 }
